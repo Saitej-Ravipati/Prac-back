@@ -22,11 +22,15 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         User authenticatedUser = userService.login(loginRequest.getEmail(), loginRequest.getPassword());
         if (authenticatedUser != null) {
-            return ResponseEntity.ok("Login successful!");
+            return ResponseEntity.ok("{\"message\": \"Login successful\"}");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed");
+            System.out.println("Login failed for email: " + loginRequest.getEmail());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"error\": \"Login failed\"}");
         }
     }
+
+
+
 }
 
 

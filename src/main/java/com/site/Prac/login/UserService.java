@@ -23,12 +23,21 @@ public class UserService {
         User user = userRepository.findByEmail(email);
         System.out.println("Incoming email: " + email);
         System.out.println("Incoming password: " + password);
-        System.out.println("Hashed password in DB: " + (user != null ? user.getPassword() : "User not found"));
+        System.out.println("User found in DB: " + (user != null));
 
-        if (user != null && bCryptPasswordEncoder.matches(password, user.getPassword())) {
-            return user;
+        if (user != null) {
+            System.out.println("Hashed password in DB: " + user.getPassword());
+            if (bCryptPasswordEncoder.matches(password, user.getPassword())) {
+                return user;
+            } else {
+                System.out.println("Password does not match.");
+            }
+        } else {
+            System.out.println("Email not found in DB.");
         }
         return null;
     }
+
+
 
 }
