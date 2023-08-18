@@ -1,4 +1,4 @@
-package com.site.Prac.login;
+package com.site.Prac.Configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

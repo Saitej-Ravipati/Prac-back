@@ -1,5 +1,9 @@
-package com.site.Prac.login;
+package com.site.Prac.Service;
 
+import com.site.Prac.Repository.UserRepository;
+import com.site.Prac.login.InvalidCredentialsException;
+import com.site.Prac.login.User;
+import com.site.Prac.login.UserAlreadyExistsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

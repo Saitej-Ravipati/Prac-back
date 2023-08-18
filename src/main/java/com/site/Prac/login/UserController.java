@@ -1,6 +1,5 @@
 package com.site.Prac.login;
-import com.site.Prac.login.UserAlreadyExistsException;
-import com.site.Prac.login.InvalidCredentialsException;
+import com.site.Prac.Service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
