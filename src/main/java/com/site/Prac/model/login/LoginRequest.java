@@ -1,22 +1,9 @@
-package com.site.Prac.login;
+package com.site.Prac.model.login;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+public class LoginRequest {
 
-@Document(collection = "user")
-public class User {
-    @Id
-    private String id;
     private String email;
     private String password;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
@@ -36,9 +23,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
+        return "LoginRequest{" +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
