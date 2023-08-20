@@ -1,4 +1,4 @@
-package com.site.Prac.Exception;
+package com.site.Prac.login.Exception;
 
 public class UserAlreadyExistsException extends RuntimeException {
     public UserAlreadyExistsException(String message) {

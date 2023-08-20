@@ -1,4 +1,4 @@
-package com.site.Prac.model.login;
+package com.site.Prac.login.model;
 
 public class LoginRequest {
 
