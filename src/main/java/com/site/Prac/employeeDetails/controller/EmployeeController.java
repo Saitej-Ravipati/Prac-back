@@ -39,40 +39,40 @@ public class EmployeeController {
             return new ResponseEntity<>(employee, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
-        Employee updatedEmployee = employeeService.updateEmployee(id, employee);
-        if (updatedEmployee != null) {
-            return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable String id) {
-        if (employeeService.deleteEmployee(id)) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+        @PutMapping("/{id}")
+        public ResponseEntity<Employee> updateEmployee(@PathVariable String id, @RequestBody Employee employee, @RequestHeader("userId") String loggedInUserId) {
+            Employee updatedEmployee = employeeService.updateEmployee(id, employee, loggedInUserId);
+            if (updatedEmployee != null) {
+                return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+             }
 
-    @GetMapping("/firstName/{firstName}")
-    public ResponseEntity<List<Employee>> getEmployeeByFirstName(@PathVariable String firstName) {
-        List<Employee> employees = employeeService.getEmployeeByFirstName(firstName);
-        if (!employees.isEmpty()) {
-            return new ResponseEntity<>(employees, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+            @DeleteMapping("/{id}")
+             public ResponseEntity<Void> deleteEmployee(@PathVariable String id) {
+            if (employeeService.deleteEmployee(id)) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+             }
 
-    @GetMapping("/lastName/{lastName}")
-    public ResponseEntity<List<Employee>> getEmployeeByLastName(@PathVariable String lastName) {
-        List<Employee> employees = employeeService.getEmployeeByLastName(lastName);
-        if (!employees.isEmpty()) {
-            return new ResponseEntity<>(employees, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-}
+            @GetMapping("/firstName/{firstName}")
+            public ResponseEntity<List<Employee>> getEmployeeByFirstName(@PathVariable String firstName) {
+                List<Employee> employees = employeeService.getEmployeeByFirstName(firstName);
+                if (!employees.isEmpty()) {
+                    return new ResponseEntity<>(employees, HttpStatus.OK);
+                }
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                 }
+
+                @GetMapping("/lastName/{lastName}")
+                public ResponseEntity<List<Employee>> getEmployeeByLastName (@PathVariable String lastName){
+                    List<Employee> employees = employeeService.getEmployeeByLastName(lastName);
+                    if (!employees.isEmpty()) {
+                        return new ResponseEntity<>(employees, HttpStatus.OK);
+                    }
+                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
+            }

@@ -1,4 +1,4 @@
-package com.site.Prac.login.Service;
+package com.site.Prac.login.service;
 
 import com.site.Prac.login.Exception.InvalidCredentialsException;
 import com.site.Prac.login.Exception.UserAlreadyExistsException;

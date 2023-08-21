@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Employee {
 
+    private boolean isAdmin;
     private String empId;
     private String empType;
     private String category;
@@ -20,6 +21,14 @@ public class Employee {
     private List<Placement> placements;
     private List<String> expenses;
     private List<SalesTeam> sales;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public String getEmpId() {
         return empId;
@@ -144,7 +153,8 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "empId='" + empId + '\'' +
+                "isAdmin=" + isAdmin +
+                ", empId='" + empId + '\'' +
                 ", empType='" + empType + '\'' +
                 ", category='" + category + '\'' +
                 ", empStatus=" + empStatus +

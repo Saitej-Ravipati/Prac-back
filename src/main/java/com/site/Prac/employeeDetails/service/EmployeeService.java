@@ -1,5 +1,6 @@
 package com.site.Prac.employeeDetails.service;
 
+import com.site.Prac.employeeDetails.exception.UnauthorizedAccessException;
 import com.site.Prac.employeeDetails.model.Employee;
 import com.site.Prac.employeeDetails.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,18 @@ public class EmployeeService {
         return employeeRepository.findById(id).orElse(null);
     }
 
-    public Employee updateEmployee(String id, Employee employee) {
+    public Employee updateEmployee(String id, Employee employee, String loggedInUserId) {
+        if (!id.equals(loggedInUserId)) {
+            throw new UnauthorizedAccessException("Unauthorized Access");
+        }
         if (employeeRepository.existsById(id)) {
             return employeeRepository.save(employee);
         }
         return null;
     }
 
-    public boolean deleteEmployee(String id) {
+    // Employees should not have delete access
+     public boolean deleteEmployee(String id) {
         if (employeeRepository.existsById(id)) {
             employeeRepository.deleteById(id);
             return true;
@@ -50,5 +55,9 @@ public class EmployeeService {
 
     public List<Employee> getEmployeeByLastName(String lastName) {
         return employeeRepository.findByLastName(lastName);
+    }
+
+    public Employee getEmployeeDataForUser(String loggedInUserId) {
+        return employeeRepository.findById(loggedInUserId).orElseThrow(() -> new UnauthorizedAccessException("Unauthorized Access"));
     }
 }
